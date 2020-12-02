@@ -11,26 +11,26 @@ class Day2Test {
     @Test
     public void passwordCheckTest(){
         // wrong policy
-        Password password = new Password("1-3 a: abcde");
-        assertEquals(password.getMinOccurrence(),1);
-        assertEquals(password.getMaxOccurrence(),3);
-        assertEquals(password.getNeedle(),"a");
-        assertEquals(password.getPassword(),"abcde");
-        assertTrue(password.isValid());
+        PasswordInfoForSledRentalShop passwordInfo = new PasswordInfoForSledRentalShop("1-3 a: abcde");
+        assertEquals(passwordInfo.getMinMandatoryLetterOccurrences(),1);
+        assertEquals(passwordInfo.getMaxMandatoryLetterOccurrences(),3);
+        assertEquals(passwordInfo.getMandatoryLetter(),"a");
+        assertEquals(passwordInfo.getPassword(),"abcde");
+        assertTrue(passwordInfo.isValid());
 
-        Password password2 = new Password("10-16 r: nrrrrkrjtxwrrrwx");
-        assertFalse(password2.isValid());
+        PasswordInfoForSledRentalShop passwordInfo2 = new PasswordInfoForSledRentalShop("10-16 r: nrrrrkrjtxwrrrwx");
+        assertFalse(passwordInfo2.isValid());
 
         // correct policy
-        PasswordCorrectPolicy password3 = new PasswordCorrectPolicy("1-3 a: abcde");
-        assertEquals(password3.getFirstPosition(),1);
-        assertEquals(password3.getSecondPosition(),3);
-        assertEquals(password3.getNeedle(),"a");
-        assertEquals(password3.getPassword(),"abcde");
-        assertTrue(password3.isValid());
+        PasswordInfoForTobogganRentalShop passwordInfo3 = new PasswordInfoForTobogganRentalShop("1-3 a: abcde");
+        assertEquals(passwordInfo3.getFirstPositionOfMandatoryLetter(),1);
+        assertEquals(passwordInfo3.getSecondPositionOfMandatoryLetter(),3);
+        assertEquals(passwordInfo3.getMandatoryLetter(),"a");
+        assertEquals(passwordInfo3.getPassword(),"abcde");
+        assertTrue(passwordInfo3.isValid());
 
-        PasswordCorrectPolicy password4 = new PasswordCorrectPolicy("2-9 c: ccccccccc");
-        assertFalse(password4.isValid());
+        PasswordInfoForTobogganRentalShop passwordInfo4 = new PasswordInfoForTobogganRentalShop("2-9 c: ccccccccc");
+        assertFalse(passwordInfo4.isValid());
     }
 
     @Test

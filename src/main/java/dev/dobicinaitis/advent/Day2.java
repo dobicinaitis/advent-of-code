@@ -12,63 +12,59 @@ public class Day2 {
 
     public static long getFirstPuzzleSolution(String filename){
         List<String> inputs = Utils.getFileContent(filename);
-        return inputs.stream().filter(p -> new Password(p).isValid()).count();
+        return inputs.stream().filter(p -> new PasswordInfoForSledRentalShop(p).isValid()).count();
     }
 
     public static long getSecondPuzzleSolution(String filename){
         List<String> inputs = Utils.getFileContent(filename);
-        return inputs.stream().filter(p -> new PasswordCorrectPolicy(p).isValid()).count();
+        return inputs.stream().filter(p -> new PasswordInfoForTobogganRentalShop(p).isValid()).count();
     }
 }
 
 @Slf4j
 @Getter
-class Password {
-    private int minOccurrence;
-    private int maxOccurrence;
-    private String needle;
+class PasswordInfoForSledRentalShop {
+    private String mandatoryLetter;
+    private int minMandatoryLetterOccurrences;
+    private int maxMandatoryLetterOccurrences;
     private String password;
-    private String originalInput;
 
-    public Password(String passwordWithPolicy){
-        originalInput = passwordWithPolicy;
-        minOccurrence = Integer.parseInt(passwordWithPolicy.substring(0,passwordWithPolicy.indexOf("-")));
-        maxOccurrence = Integer.parseInt(passwordWithPolicy.substring(passwordWithPolicy.indexOf("-") + 1,
-                passwordWithPolicy.indexOf(" ")));
-        needle = passwordWithPolicy.substring(passwordWithPolicy.indexOf(" ") + 1, passwordWithPolicy.indexOf(":"));
-        password = passwordWithPolicy.substring(passwordWithPolicy.indexOf(": ") + 2);
+    public PasswordInfoForSledRentalShop(String s){
+        minMandatoryLetterOccurrences = Integer.parseInt(s.substring(0,s.indexOf("-")));
+        maxMandatoryLetterOccurrences = Integer.parseInt(s.substring(s.indexOf("-") + 1, s.indexOf(" ")));
+        mandatoryLetter = s.substring(s.indexOf(" ") + 1, s.indexOf(":"));
+        password = s.substring(s.indexOf(": ") + 2);
     }
 
     public boolean isValid(){
-        long count = Pattern.compile("["+ needle +"]")
+        long count = Pattern.compile("["+ mandatoryLetter +"]")
                 .matcher(password)
                 .results()
                 .count();
-        return  (count >= minOccurrence && count <= maxOccurrence);
+        return  (count >= minMandatoryLetterOccurrences && count <= maxMandatoryLetterOccurrences);
     }
 }
 
 @Slf4j
 @Getter
-class PasswordCorrectPolicy {
-    private int firstPosition;
-    private int secondPosition;
-    private String needle;
+class PasswordInfoForTobogganRentalShop {
+    private String mandatoryLetter;
+    private int firstPositionOfMandatoryLetter;
+    private int secondPositionOfMandatoryLetter;
     private String password;
-    private String originalInput;
 
-    public PasswordCorrectPolicy(String passwordWithPolicy){
-        Password parsedPassword = new Password(passwordWithPolicy);
-        originalInput = passwordWithPolicy;
-        firstPosition = parsedPassword.getMinOccurrence();
-        secondPosition = parsedPassword.getMaxOccurrence();
-        needle = parsedPassword.getNeedle();
-        password = parsedPassword.getPassword();
+    public PasswordInfoForTobogganRentalShop(String s){
+        firstPositionOfMandatoryLetter = Integer.parseInt(s.substring(0,s.indexOf("-")));
+        secondPositionOfMandatoryLetter = Integer.parseInt(s.substring(s.indexOf("-") + 1, s.indexOf(" ")));
+        mandatoryLetter = s.substring(s.indexOf(" ") + 1, s.indexOf(":"));
+        password = s.substring(s.indexOf(": ") + 2);
     }
 
     public boolean isValid(){
-        boolean firstCharacterMatches = password.substring(firstPosition - 1, firstPosition).equals(needle);
-        boolean secondCharacterMatches = password.substring(secondPosition -1, secondPosition).equals(needle);
+        boolean firstCharacterMatches = password.substring(firstPositionOfMandatoryLetter - 1,
+                firstPositionOfMandatoryLetter).equals(mandatoryLetter);
+        boolean secondCharacterMatches = password.substring(secondPositionOfMandatoryLetter -1,
+                secondPositionOfMandatoryLetter).equals(mandatoryLetter);
 
         if ((firstCharacterMatches && !secondCharacterMatches) || (!firstCharacterMatches && secondCharacterMatches)){
             return true;
