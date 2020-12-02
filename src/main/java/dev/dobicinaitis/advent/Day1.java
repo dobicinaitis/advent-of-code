@@ -11,7 +11,7 @@ public class Day1 {
     private int[] puzzleInput;
 
     @SneakyThrows
-    public int solvePuzzleOne(){
+    public int getFirstPuzzleSolution(){
         for(int i = 0; i< puzzleInput.length; i++){
             for (int k = i + 1; k < puzzleInput.length; k++){
                 int sum = puzzleInput[i] + puzzleInput[k];
@@ -30,7 +30,7 @@ public class Day1 {
 
 
     @SneakyThrows
-    public int solvePuzzleTwo(){
+    public int getSecondPuzzleSolution(){
         for(int i = 0; i< puzzleInput.length; i++){
             for (int k = i + 1; k < puzzleInput.length; k++){
                 for (int j = k + 1; j < puzzleInput.length; j++){
