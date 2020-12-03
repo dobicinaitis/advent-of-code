@@ -15,13 +15,9 @@ public class Day3 {
 
         for(int i = stepsDown; i < mapRows.size(); i = i + stepsDown){
             currentPositionRight+=stepsRight;
-            String currentRow = mapRows.get(i);
-            // extend the pattern if it`s too short
-            while (currentPositionRight >= currentRow.length()){
-                currentRow = currentRow.concat(mapRows.get(i));
-            }
+            String currentRow = getExtendedPattern(mapRows.get(i), currentPositionRight);
 
-            if (currentRow.charAt(currentPositionRight) == '#'){
+            if (wasTreeHit(currentRow.charAt(currentPositionRight))){
                 treesHit++;
             }
         }
@@ -30,5 +26,17 @@ public class Day3 {
 
     public static int getSecondPuzzleSolution(String filename, int stepsRight, int stepsDown){
         return getFirstPuzzleSolution(filename,stepsRight, stepsDown);
+    }
+
+    public static String getExtendedPattern(String patternTemplate, int targetLength){
+        String extendedPattern = patternTemplate;
+        while (targetLength >= extendedPattern.length()){
+            extendedPattern = extendedPattern.concat(patternTemplate);
+        }
+        return extendedPattern;
+    }
+
+    public static boolean wasTreeHit(char check){
+        return (check == '#');
     }
 }

@@ -1,10 +1,25 @@
 package dev.dobicinaitis.advent;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 class Day3Test {
+
+    @Test
+    public void treeWasHitTest(){
+        assertTrue(Day3.wasTreeHit('#'));
+        assertFalse(Day3.wasTreeHit('.'));
+    }
+
+    @Test
+    public void extendPatternTest(){
+        int targetLength = 10;
+        int extendedPatternLength = Day3.getExtendedPattern("a", targetLength).length();
+        assertTrue(extendedPatternLength >= targetLength);
+    }
 
     @Test
     public void firstPuzzleExampleTest(){
