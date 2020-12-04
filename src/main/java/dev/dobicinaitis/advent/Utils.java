@@ -20,4 +20,15 @@ public class Utils {
         }
         return null;
     }
+
+    public static String getFileContentAsString(String filename){
+        try {
+            Path path = Paths.get("src/main/resources/inputs/" + filename);
+            return Files.readString(path);
+        } catch (IOException e) {
+            log.error("Could not read file: {}", filename);
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
