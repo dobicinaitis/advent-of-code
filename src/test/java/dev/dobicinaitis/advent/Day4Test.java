@@ -36,14 +36,14 @@ class Day4Test {
                 + "hgt:179cm cid:147 pid:xxx";
         Passport passport = new Passport(rawEntryInBatchFile);
 
-        assertEquals(passport.getBirthYear(),1931);
-        assertEquals(passport.getIssueYear(),2013);
-        assertEquals(passport.getExpirationYear(),2024);
-        assertEquals(passport.getHeight(),"179cm");
-        assertEquals(passport.getHairColor(),"#ae17e1");
-        assertEquals(passport.getEyeColor(),"brn");
-        assertEquals(passport.getPassportId(),"xxx");
-        assertEquals(passport.getCountryId(),"147");
+        assertEquals(1931, passport.getBirthYear());
+        assertEquals(2013, passport.getIssueYear());
+        assertEquals(2024, passport.getExpirationYear());
+        assertEquals("179cm", passport.getHeight());
+        assertEquals("#ae17e1", passport.getHairColor());
+        assertEquals("brn", passport.getEyeColor());
+        assertEquals("xxx", passport.getPassportId());
+        assertEquals("147", passport.getCountryId());
         assertTrue(passport.isValid());
     }
 

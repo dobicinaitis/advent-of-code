@@ -12,10 +12,10 @@ class Day2Test {
     public void passwordCheckTest(){
         // wrong policy
         PasswordInfoForSledRentalShop passwordInfo = new PasswordInfoForSledRentalShop("1-3 a: abcde");
-        assertEquals(passwordInfo.getMinMandatoryLetterOccurrences(),1);
-        assertEquals(passwordInfo.getMaxMandatoryLetterOccurrences(),3);
-        assertEquals(passwordInfo.getMandatoryLetter(),"a");
-        assertEquals(passwordInfo.getPassword(),"abcde");
+        assertEquals(1, passwordInfo.getMinMandatoryLetterOccurrences());
+        assertEquals(3,passwordInfo.getMaxMandatoryLetterOccurrences());
+        assertEquals("a",passwordInfo.getMandatoryLetter());
+        assertEquals("abcde", passwordInfo.getPassword());
         assertTrue(passwordInfo.isValid());
 
         PasswordInfoForSledRentalShop passwordInfo2 = new PasswordInfoForSledRentalShop("10-16 r: nrrrrkrjtxwrrrwx");
@@ -23,10 +23,10 @@ class Day2Test {
 
         // correct policy
         PasswordInfoForTobogganRentalShop passwordInfo3 = new PasswordInfoForTobogganRentalShop("1-3 a: abcde");
-        assertEquals(passwordInfo3.getFirstPositionOfMandatoryLetter(),1);
-        assertEquals(passwordInfo3.getSecondPositionOfMandatoryLetter(),3);
-        assertEquals(passwordInfo3.getMandatoryLetter(),"a");
-        assertEquals(passwordInfo3.getPassword(),"abcde");
+        assertEquals(1, passwordInfo3.getFirstPositionOfMandatoryLetter());
+        assertEquals(3, passwordInfo3.getSecondPositionOfMandatoryLetter());
+        assertEquals("a", passwordInfo3.getMandatoryLetter());
+        assertEquals("abcde", passwordInfo3.getPassword());
         assertTrue(passwordInfo3.isValid());
 
         PasswordInfoForTobogganRentalShop passwordInfo4 = new PasswordInfoForTobogganRentalShop("2-9 c: ccccccccc");
@@ -35,22 +35,22 @@ class Day2Test {
 
     @Test
     public void firstPuzzleExampleTest(){
-        assertEquals(Day2.getFirstPuzzleSolution("day2_example_input.txt"),2);
+        assertEquals(2, Day2.getFirstPuzzleSolution("day2_example_input.txt"));
     }
 
     @Test
     public void firstPuzzleMyInputTest(){
-        assertEquals(Day2.getFirstPuzzleSolution("day2_my_input.txt"),424);
+        assertEquals(424, Day2.getFirstPuzzleSolution("day2_my_input.txt"));
     }
 
 
     @Test
     public void secondPuzzleExampleTest(){
-        assertEquals(Day2.getSecondPuzzleSolution("day2_example_input.txt"),1);
+        assertEquals(1, Day2.getSecondPuzzleSolution("day2_example_input.txt"));
     }
 
     @Test
     public void secondPuzzleMyInputTest(){
-        assertEquals(Day2.getSecondPuzzleSolution("day2_my_input.txt"),747);
+        assertEquals(747, Day2.getSecondPuzzleSolution("day2_my_input.txt"));
     }
 }
