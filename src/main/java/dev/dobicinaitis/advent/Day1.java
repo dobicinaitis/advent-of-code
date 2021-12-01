@@ -1,52 +1,44 @@
 package dev.dobicinaitis.advent;
 
 import lombok.AllArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
 
 @Slf4j
 @AllArgsConstructor
 public class Day1 {
-    private static final int REQUIRED_SUM = 2020;
-    private int[] puzzleInput;
 
-    @SneakyThrows
-    public int getFirstPuzzleSolution(){
-        for(int i = 0; i< puzzleInput.length; i++){
-            for (int k = i + 1; k < puzzleInput.length; k++){
-                int sum = puzzleInput[i] + puzzleInput[k];
-                log.debug("checking: {} + {} = {}", puzzleInput[i], puzzleInput[k], sum);
-                if (sum == REQUIRED_SUM){
-                    log.info("Bingo! Found entries {} and {} that sum to {}", puzzleInput[i], puzzleInput[k], REQUIRED_SUM);
-                    int result = puzzleInput[i] * puzzleInput[k];
-                    log.info("result {}", result);
-                    return result;
-                }
+    public int getFirstPuzzleSolution(String filename){
+        List<String> measurements = Utils.getFileContent(filename);
+        int timesMeasurementIncreased = 0;
+
+        for (int i = 1; i < measurements.size(); i++){
+            if (toInt(measurements.get(i)) > toInt(measurements.get(i - 1))){
+                timesMeasurementIncreased++;
             }
         }
-        log.warn("did not find any entries that sum to {}", REQUIRED_SUM);
-        throw new Exception("Nope! debug, code, test, repeat :p");
+
+        return timesMeasurementIncreased;
     }
 
+    public int getSecondPuzzleSolution(String filename){
+        List<String> measurements = Utils.getFileContent(filename);
+        int timesMeasurementIncreased = 0;
 
-    @SneakyThrows
-    public int getSecondPuzzleSolution(){
-        for(int i = 0; i< puzzleInput.length; i++){
-            for (int k = i + 1; k < puzzleInput.length; k++){
-                for (int j = k + 1; j < puzzleInput.length; j++){
-                    int sum = puzzleInput[i] + puzzleInput[k] + puzzleInput[j];
-                    log.debug("checking: {} + {} + {} = {}", puzzleInput[i], puzzleInput[k], puzzleInput[j], sum);
-                    if (sum == REQUIRED_SUM){
-                        log.info("Bingo! Found entries {}, {} and {} that sum to {}", puzzleInput[i], puzzleInput[k],
-                                puzzleInput[j], REQUIRED_SUM);
-                        int result = puzzleInput[i] * puzzleInput[k] * puzzleInput[j];
-                        log.info("result {}", result);
-                        return result;
-                    }
-                }
+        for (int i = 0; i < measurements.size() - 3; i++){
+            int sumOf3Measurements = toInt(measurements.get(i)) + toInt(measurements.get(i + 1)) + toInt(measurements.get(i + 2));
+            int sumOf3NextMeasurements = toInt(measurements.get(i + 1)) + toInt(measurements.get(i + 2)) + toInt(measurements.get(i + 3));
+
+            if (sumOf3NextMeasurements > sumOf3Measurements){
+                timesMeasurementIncreased++;
             }
         }
-        log.warn("did not find any entries that sum to {}", REQUIRED_SUM);
-        throw new Exception("Nope! debug, code, test, repeat :p");
+
+        return timesMeasurementIncreased;
+    }
+
+    private Integer toInt(String value){
+        return Integer.parseInt(value);
     }
 }
