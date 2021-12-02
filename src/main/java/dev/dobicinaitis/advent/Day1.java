@@ -7,9 +7,9 @@ import java.util.List;
 
 @Slf4j
 @AllArgsConstructor
-public class Day1 {
+public class Day1 extends Puzzle {
 
-    public int getFirstPuzzleSolution(String filename){
+    public Integer getFirstPuzzleSolution(String filename){
         List<String> measurements = Utils.getFileContent(filename);
         int timesMeasurementIncreased = 0;
 
@@ -22,7 +22,7 @@ public class Day1 {
         return timesMeasurementIncreased;
     }
 
-    public int getSecondPuzzleSolution(String filename){
+    public Integer getSecondPuzzleSolution(String filename){
         List<String> measurements = Utils.getFileContent(filename);
         int timesMeasurementIncreased = 0;
 
