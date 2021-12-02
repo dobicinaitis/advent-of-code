@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Slf4j
 public class Utils {
@@ -31,5 +33,16 @@ public class Utils {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static int extractFirstNumberFromString(String input){
+        Pattern pattern = Pattern.compile("\\d+");
+        Matcher matcher = pattern.matcher(input);
+
+        while(matcher.find()) {
+            return Integer.parseInt(matcher.group());
+        }
+
+        throw new RuntimeException("Input [{}] does not contain any numbers");
     }
 }

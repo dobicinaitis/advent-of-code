@@ -10,21 +10,21 @@ class Day2Test {
 
     @Test
     public void firstPuzzleExampleTest() {
-        assertEquals(150, puzzle.getFirstPuzzleSolution("day2_example_input.txt"));
+        assertEquals(150, puzzle.getFirstPuzzleSolution(puzzle.exampleInputFilename));
     }
 
     @Test
     public void firstPuzzleMyInputTest() {
-        assertEquals(1480518, puzzle.getFirstPuzzleSolution("day2_my_input.txt"));
+        assertEquals(1480518, puzzle.getFirstPuzzleSolution(puzzle.myInputFilename));
     }
 
     @Test
     public void secondPuzzleExampleTest() {
-        assertEquals(900, puzzle.getSecondPuzzleSolution("day2_example_input.txt"));
+        assertEquals(900, puzzle.getSecondPuzzleSolution(puzzle.exampleInputFilename));
     }
 
     @Test
     public void secondPuzzleMyInputTest() {
-        assertEquals(1282809906, puzzle.getSecondPuzzleSolution("day2_my_input.txt"));
+        assertEquals(1282809906, puzzle.getSecondPuzzleSolution(puzzle.myInputFilename));
     }
 }
