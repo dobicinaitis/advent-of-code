@@ -3,18 +3,14 @@ package dev.dobicinaitis.advent;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @AllArgsConstructor
 public class Day6 extends Puzzle {
 
     public Integer getFirstPuzzleSolution(String filename) {
-        List<Integer> lanternFishes = Arrays.asList(Utils.getFileContentAsString(filename).split(",")).stream()
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        List<Integer> lanternFishes = Utils.getFileContentAsIntegerList(filename);
         int observationPeriod = 80;
 
         for (int i = 0; i < observationPeriod; i++) {
@@ -33,9 +29,7 @@ public class Day6 extends Puzzle {
     }
 
     public Long getSecondPuzzleSolution(String filename) {
-        List<Long> lanternFishes = Arrays.asList(Utils.getFileContentAsString(filename).split(",")).stream()
-                .map(Long::parseLong)
-                .collect(Collectors.toList());
+        List<Integer> lanternFishes = Utils.getFileContentAsIntegerList(filename);
         int observationPeriod = 256;
 
         return lanternFishes.parallelStream()

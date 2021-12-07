@@ -6,9 +6,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class Utils {
@@ -22,6 +24,12 @@ public class Utils {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static List<Integer> getFileContentAsIntegerList(String filename){
+        return Arrays.asList(Utils.getFileContentAsString(filename).split(",")).stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     public static String getFileContentAsString(String filename){
