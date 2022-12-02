@@ -1,20 +1,20 @@
 #!/bin/bash
 
-# Creates files for Day X from Day1 classes, tests, inputs
+# Creates files for Day X from Day0 classes, tests, inputs
 #
 # Usage ./new_date.sh DAY_NUMBER
 # Example: ./new_date.sh 2
 
 day_number=$1
-template_date=1
+template_date=0
 
 if ! [[ $day_number =~ ^[0-9]+$ ]]; then
     echo "Please provide a day number as 1st argument"
     exit 1
 fi
 
-if [[ "$day_number" -lt 2 || "$day_number" -gt 24 ]]; then
-    echo "Please provide a day number between 2 and 24"
+if [[ "$day_number" -lt 1 || "$day_number" -gt 24 ]]; then
+    echo "Please provide a day number between 1 and 24"
     exit 1
 fi
 
