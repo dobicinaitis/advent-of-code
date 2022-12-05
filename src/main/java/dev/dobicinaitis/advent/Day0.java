@@ -10,12 +10,12 @@ import java.util.List;
 public class Day0 extends Puzzle {
 
     public Integer getFirstPuzzleSolution(String filename) {
-        List<String> input = Utils.getFileContent(filename);
+        final List<String> input = Utils.getFileContent(filename);
         return 0;
     }
 
     public Integer getSecondPuzzleSolution(String filename) {
-        List<String> input = Utils.getFileContent(filename);
+        final List<String> input = Utils.getFileContent(filename);
         return 0;
     }
 }
