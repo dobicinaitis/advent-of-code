@@ -2,8 +2,8 @@
 
 # Creates files for Day X from Day0 classes, tests, inputs
 #
-# Usage ./new_date.sh DAY_NUMBER
-# Example: ./new_date.sh 2
+# Usage ./new_day.sh DAY_NUMBER
+# Example: ./new_day.sh 2
 
 day_number=$1
 template_date=0
@@ -18,8 +18,8 @@ if [[ "$day_number" -lt 1 || "$day_number" -gt 24 ]]; then
     exit 1
 fi
 
-script_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-cd "$script_path"
+script_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P ) || exit 1
+cd "$script_path" || exit 1
 
 source_directory=src/main/java/dev/dobicinaitis/advent
 test_directory=src/test/java/dev/dobicinaitis/advent
