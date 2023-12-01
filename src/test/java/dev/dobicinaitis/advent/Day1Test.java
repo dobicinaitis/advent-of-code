@@ -15,16 +15,16 @@ class Day1Test {
 
     @Test
     public void firstPuzzleMyInputTest() {
-        assertEquals(1, puzzle.getFirstPuzzleSolution(puzzle.myInputFilename));
+        assertEquals(54630, puzzle.getFirstPuzzleSolution(puzzle.myInputFilename));
     }
 
     @Test
     public void secondPuzzleExampleTest() {
-        assertEquals(1, puzzle.getSecondPuzzleSolution(puzzle.exampleInputFilename));
+        assertEquals(281, puzzle.getSecondPuzzleSolution("day1_example_2_input.txt"));
     }
 
     @Test
     public void secondPuzzleMyInputTest() {
-        assertEquals(1, puzzle.getSecondPuzzleSolution(puzzle.myInputFilename));
+        assertEquals(54770, puzzle.getSecondPuzzleSolution(puzzle.myInputFilename));
     }
 }
