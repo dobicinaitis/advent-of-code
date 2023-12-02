@@ -40,19 +40,19 @@ public class Day2 extends Puzzle {
     private int calculatePart2Solution(final List<Game> games) {
         int sumOfGamePowers = 0;
         for (Game game : games) {
-            final int minNumberGreenOfCubes = game.getSets().stream()
+            final int minNumberOfGreenCubes = game.getSets().stream()
                     .mapToInt(GameSet::getNumberOfGreenCubes)
                     .max()
                     .orElseThrow();
-            final int minNumberRedOfCubes = game.getSets().stream()
+            final int minNumberOfRedCubes = game.getSets().stream()
                     .mapToInt(GameSet::getNumberOfRedCubes)
                     .max()
                     .orElseThrow();
-            final int minNumberBlueOfCubes = game.getSets().stream()
+            final int minNumberOfBlueCubes = game.getSets().stream()
                     .mapToInt(GameSet::getNumberOfBlueCubes)
                     .max()
                     .orElseThrow();
-            sumOfGamePowers += minNumberGreenOfCubes * minNumberRedOfCubes * minNumberBlueOfCubes;
+            sumOfGamePowers += minNumberOfGreenCubes * minNumberOfRedCubes * minNumberOfBlueCubes;
         }
         return sumOfGamePowers;
     }
