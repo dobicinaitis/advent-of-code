@@ -19,18 +19,14 @@ public class Day3 extends Puzzle {
     public Integer getFirstPuzzleSolution(String filename) {
         final List<String> input = Utils.getFileContent(filename);
         final List<EnginePart> engineParts = parseInput(input);
-        // log.debug("Engine parts: {}", engineParts);
         final List<EnginePart> validParts = extractValidParts(engineParts, input);
-        // log.debug("Valid parts: {}", validParts);
         return validParts.stream().mapToInt(EnginePart::getPartNumber).sum();
     }
 
     public Integer getSecondPuzzleSolution(String filename) {
         final List<String> input = Utils.getFileContent(filename);
         final List<EnginePart> engineParts = parseInput(input);
-        // log.debug("Engine parts: {}", engineParts);
         final List<EnginePart> validParts = extractValidParts(engineParts, input);
-        // log.debug("Valid parts: {}", validParts);
         return extractGearRatios(validParts, input).stream().mapToInt(Integer::intValue).sum();
     }
 
@@ -48,13 +44,11 @@ public class Day3 extends Puzzle {
                     if (numberStartIndex == -1) {
                         numberStartIndex = j;
                     }
-                } else {
-                    if (!digitStash.isEmpty()) {
-                        final int partNumber = Integer.parseInt(digitStash);
-                        engineParts.add(new EnginePart(partNumber, rowId, numberStartIndex));
-                        digitStash = "";
-                        numberStartIndex = -1;
-                    }
+                } else if (!digitStash.isEmpty()) {
+                    final int partNumber = Integer.parseInt(digitStash);
+                    engineParts.add(new EnginePart(partNumber, rowId, numberStartIndex));
+                    digitStash = "";
+                    numberStartIndex = -1;
                 }
                 // line ends with a number
                 if (j == line.length() - 1 && !digitStash.isEmpty()) {
