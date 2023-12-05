@@ -6,7 +6,7 @@ abstract class Puzzle {
     protected String exampleInputFilename;
     protected String myInputFilename;
 
-    public Puzzle() {
+    protected Puzzle() {
         this.exampleInputFilename = EXAMPLE_FILENAME_TEMPLATE.replace("{number}", String.valueOf(getDayNumber()));
         this.myInputFilename = MY_FILENAME_TEMPLATE.replace("{number}", String.valueOf(getDayNumber()));
     }

@@ -6,25 +6,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Day0Test {
 
-    private Puzzle puzzle = new Day0();
+    private final Puzzle puzzle = new Day0();
 
     @Test
-    public void firstPuzzleExampleTest() {
+    void firstPuzzleExampleTest() {
         assertEquals(0, puzzle.getFirstPuzzleSolution(puzzle.exampleInputFilename));
     }
 
     @Test
-    public void firstPuzzleMyInputTest() {
+    void firstPuzzleMyInputTest() {
         assertEquals(0, puzzle.getFirstPuzzleSolution(puzzle.myInputFilename));
     }
 
     @Test
-    public void secondPuzzleExampleTest() {
+    void secondPuzzleExampleTest() {
         assertEquals(0, puzzle.getSecondPuzzleSolution(puzzle.exampleInputFilename));
     }
 
     @Test
-    public void secondPuzzleMyInputTest() {
+    void secondPuzzleMyInputTest() {
         assertEquals(0, puzzle.getSecondPuzzleSolution(puzzle.myInputFilename));
     }
 }
