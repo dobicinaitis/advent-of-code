@@ -20,24 +20,39 @@ public class Utils {
     }
 
     @SneakyThrows
-    public static List<String> getFileContent(String filename) {
+    public static List<String> getFileContent(final String filename) {
         final Path path = Paths.get("src/main/resources/inputs/" + filename);
         return Files.readAllLines(path);
     }
 
-    public static List<Integer> getFileContentAsIntegerList(String filename) {
-        return Arrays.stream(Objects.requireNonNull(Utils.getFileContentAsString(filename)).split(","))
+    public static List<Integer> getFileContentAsIntegerList(final String filename, final String delimiter) {
+        return Arrays.stream(Objects.requireNonNull(Utils.getFileContentAsString(filename)).split(delimiter))
+                .filter(s -> !s.isBlank())
                 .map(Integer::parseInt)
                 .toList();
     }
 
+    public static List<Integer> parseToIntegerList(final String input, final String delimiter) {
+        return Arrays.stream(input.split(delimiter))
+                .filter(s -> !s.isBlank())
+                .map(Integer::parseInt)
+                .toList();
+    }
+
+    public static List<Long> parseToLongList(final String input, final String delimiter) {
+        return Arrays.stream(input.split(delimiter))
+                .filter(s -> !s.isBlank())
+                .map(Long::parseLong)
+                .toList();
+    }
+
     @SneakyThrows
-    public static String getFileContentAsString(String filename) {
+    public static String getFileContentAsString(final String filename) {
         final Path path = Paths.get("src/main/resources/inputs/" + filename);
         return Files.readString(path);
     }
 
-    public static int extractFirstNumberFromString(String input) {
+    public static int extractFirstNumberFromString(final String input) {
         final Pattern pattern = Pattern.compile("\\d+");
         final Matcher matcher = pattern.matcher(input);
 
