@@ -26,11 +26,11 @@ test_directory=src/test/java/dev/dobicinaitis/advent
 input_directory=src/main/resources/inputs
 
 # main
-cp -n $source_directory/Day"$template_date".java $source_directory/Day"$day_number".java
+cp --update=none $source_directory/Day"$template_date".java $source_directory/Day"$day_number".java
 sed -i "s/$template_date/$day_number/g" $source_directory/Day"$day_number".java
 
 # tests
-cp -n $test_directory/Day"$template_date"Test.java $test_directory/Day"$day_number"Test.java
+cp --update=none $test_directory/Day"$template_date"Test.java $test_directory/Day"$day_number"Test.java
 sed -i "s/$template_date/$day_number/g" $test_directory/Day"$day_number"Test.java
 
 # resources
